@@ -2,3 +2,4 @@
 *.aux
 *.log
 Makefile
+__pycache__/

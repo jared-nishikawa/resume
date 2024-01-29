@@ -7,6 +7,9 @@ def cmd(command, *args, flags=[]):
         text += f"{{{arg}}}"
     return text
 
+def mathmode(s):
+    return f"${s}$"
+
 
 class Template:
     def __init__(self):

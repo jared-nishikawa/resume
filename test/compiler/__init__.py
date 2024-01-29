@@ -39,6 +39,7 @@ class Compiler:
         t.cmd("usepackage", "parskip")
         t.cmd("begin", "document")
         t.cmd("newcommand", template.cmd("vspc"), template.cmd("vskip5mm"))
+        t.cmd("renewcommand" + template.cmd("labelitemi", template.cmd("raisebox", "0.25ex", template.cmd("tiny" + template.mathmode(template.cmd("bullet"))))))
         t.cmd("pagenumbering", "gobble")
         t.cmd("textbf", template.cmd("Huge", "Jared Nishikawa, PhD"))
         t.cmd("texttt", "jared.nishikawa@gmail.com")

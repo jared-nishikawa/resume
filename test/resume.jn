@@ -1,0 +1,107 @@
+data ExperienceEntry {
+    name,
+    startdate,
+    enddate,
+    title,
+}
+
+ExperienceEntry {
+    name: "Tripleko LLC",
+    startdate: "10/18",
+    enddate: "Present",
+    title: "Owner, Software consultant",
+}
+
+ExperienceEntry {
+    name: "VMware",
+    startdate: "10/22",
+    enddate: "1/24",
+    title: "Senior Information Security Engineer",
+}
+
+ExperienceEntry {
+    name: "VMware Carbon Black",
+    startdate: "7/18",
+    enddate: "10/22",
+    title: "Senior Threat Researcher",
+}
+
+ExperienceEntry {
+    name: "SecureSet Academy",
+    startdate: "4/16",
+    enddate: "7/18",
+    title: "Cybersecurity Instructor",
+}
+
+data TalksEntry {
+    conference,
+    location,
+    date,
+    title,
+}
+
+TalksEntry {
+    conference: "CAMLIS",
+    location: "Washington DC",
+    date: "10/19",
+    title: "Next Generation Process Emulation With Binee",
+}
+
+TalksEntry {
+    conference: "RMISC",
+    location: "Denver, CO",
+    date: "5/18",
+    title: "Cryptocurrencies, Security, and You",
+}
+
+TalksEntry {
+    conference: "SnowFROC",
+    location: "Denver, CO",
+    date: "3/18",
+    title: "A Look Back at OpenSSL and Heartbleed",
+}
+
+TalksEntry {
+    conference: "SecureSet Academy - Security 101",
+    location: "Denver, CO",
+    date: "4/17",
+    title: "All About Bitcoin",
+}
+
+TalksEntry {
+    conference: "University of Colorado - Hackers Club",
+    location: "Boulder, CO",
+    date: "2/15",
+    title: "Bitcoin, Distributed Consensus, and Proof-of-work",
+}
+
+TalksEntry {
+    conference: "Willamette University - Jim Albaugh Mathematics Colloquium",
+    location: "Salem, OR",
+    date: "11/14",
+    title: "Hash Functions, a Soft Introduction",
+}
+
+data EducationEntry {
+    degree,
+    major,
+    school,
+    startdate,
+    enddate,
+}
+
+EducationEntry {
+    degree: "PhD",
+    major: "Cryptography",
+    school: "University of Colorado, Boulder",
+    startdate: "8/10",
+    enddate: "5/16",
+}
+
+EducationEntry {
+    degree: "BA",
+    major: "Mathematics",
+    school: "Willamette University",
+    startdate: "8/06",
+    enddate: "5/10",
+}

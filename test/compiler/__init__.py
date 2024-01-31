@@ -17,8 +17,11 @@ class Compiler:
             raise CompilerError(f"unknown identifier: {decl_expr.name}")
         data_expr = self.data_exprs[decl_expr.name]
         for a in decl_expr.decl_map:
-            if a not in data_expr.attrs:
+            if a not in data_expr.attrs and a not in data_expr.opt_attrs:
                 raise CompilerError(f"attribute not found for {decl_expr.name}: {a}")
+        for a in data_expr.attrs:
+            if a not in decl_expr.decl_map:
+                raise CompilerError(f"{decl_expr.name} must contain attribute: {a}")
 
     def compile(self):
         for e in self.exprs:
@@ -30,7 +33,7 @@ class Compiler:
                     self.decl_exprs[e.name] = []
                 self.decl_exprs[e.name].append(e)
 
-    def generate_short(self):
+    def generate(self, long=True):
         t = template.Template()
 
         # header
@@ -54,10 +57,13 @@ class Compiler:
             end = e.decl_map["enddate"]
             title = e.decl_map["title"]
             t.cmd("textbf", f"{name} " + template.cmd("hfill") + f" {start} - {end}")
-            t.cmd("begin", "itemize")
-            t.cmd("setlength" + template.cmd("itemsep", "-0.5em"))
-            t.cmd("item " + title)
-            t.cmd("end", "itemize")
+            t.plain(title)
+            if long:
+                t.cmd("begin", "itemize")
+                t.cmd("setlength" + template.cmd("itemsep", "-0.5em"))
+                for item in e.decl_map["projects"]:
+                    t.cmd("item " + item)
+                t.cmd("end", "itemize")
 
         t.cmd("vspc")
         t.cmd("large", "Talks")
@@ -84,6 +90,29 @@ class Compiler:
             start = e.decl_map["startdate"]
             end = e.decl_map["enddate"]
             t.cmd("textbf", f"{degree}, {major} - {school} " + template.cmd("hfill") + f" {start} - {end}")
+            if long:
+                if not any(key in e.decl_map for key in ["thesis", "advisor"]):
+                    continue
+
+                t.cmd("begin", "itemize")
+                t.cmd("setlength" + template.cmd("itemsep", "-0.5em"))
+                for key in ["thesis", "advisor"]:
+                    if key in e.decl_map:
+                        value = e.decl_map[key]
+                        t.cmd(f"item {key.capitalize()}: " + template.cmd("textit", value))
+                t.cmd("end", "itemize")
+
+        t.cmd("vspc")
+        t.cmd("large", "Tech")
+        t.cmd("vskip1mm")
+        t.cmd("hrule")
+
+        for e in self.decl_exprs["TechEntry"]:
+            typ = e.decl_map["type"]
+            l = e.decl_map["list"]
+            t.cmd("textbf", typ)
+            t.plain(l)
+            t.cmd("vspc")
 
         t.cmd("end", "document")
         return t.lines

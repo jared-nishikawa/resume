@@ -18,3 +18,6 @@ class Template:
     def cmd(self, command, *args, flags=[]):
         self.lines.append(cmd(command, *args, flags=flags))
 
+    def plain(self, text):
+        self.lines.append(text)
+

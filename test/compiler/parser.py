@@ -10,11 +10,16 @@ class Expr:
     def __repr__(self):
         return f"{self.type}"
 
+class CommentExpr(Expr):
+     def __init__(self):
+        super().__init__("comment")
+
 class DataExpr(Expr):
-    def __init__(self, name, attrs):
+    def __init__(self, name, attrs, opt_attrs):
         super().__init__("data")
         self.name = name
         self.attrs = set(attrs)
+        self.opt_attrs = set(opt_attrs)
 
     def __repr__(self):
         return f"{self.name}-{self.attrs}"
@@ -32,7 +37,6 @@ class EOFExpr(Expr):
     def __init__(self):
         super().__init__("eof")
 
-
 class Parser:
     def __init__(self, text):
         s = scanner.Scanner(text)
@@ -43,7 +47,7 @@ class Parser:
 
     def peek(self, n=0):
         if self.index+n >= len(self.tokens):
-            return scanner.Token(self.index, "\0", "eof")
+            return scanner.Token(self.index, "\0", "eof", 0, 0)
         return self.tokens[self.index+n]
 
     def read(self):
@@ -56,22 +60,45 @@ class Parser:
     def expect(self, t):
         tok = self.read()
         if tok.type != t:
-            raise ParserError(f"expected {t}, found {tok.type}")
+            raise ParserError(f"expected {t}, found {tok.type} at ({tok.row}, {tok.col})")
         return tok
+
+    def unexpected(self, t):
+        raise ParserError(f"unexpected at ({t.row}, {t.col}): {t.value}")
 
     def parse_data(self):
         self.expect("data")
         name = self.expect("identifier").value
         self.expect("leftcurly")
         attrs = []
+        opt_attrs = []
         while 1:
+            opt = False
             if self.peek().type == "rightcurly":
                 break
+            if self.peek().type == "asterisk":
+                self.read()
+                opt = True
             a = self.expect("identifier")
             self.expect("comma")
-            attrs.append(a.value)
+            if opt:
+                opt_attrs.append(a.value)
+            else:
+                attrs.append(a.value)
         self.expect("rightcurly")
-        return DataExpr(name, attrs)
+        return DataExpr(name, attrs, opt_attrs)
+
+    def parse_list(self):
+        self.expect("leftsquare")
+        values = []
+        while 1:
+            if self.peek().type == "rightsquare":
+                break
+            s = self.expect("string")
+            values.append(s.value)
+            self.expect("comma")
+        self.expect("rightsquare")
+        return values
 
     def parse_decl(self):
         name = self.expect("identifier").value
@@ -82,11 +109,22 @@ class Parser:
                 break
             a = self.expect("identifier")
             self.expect("colon")
-            s = self.expect("string")
+            t = self.peek()
+            if t.type == "string":
+                self.read()
+                v = t.value
+            elif t.type == "leftsquare":
+                v = self.parse_list()
+            else:
+                self.unexpected(t)
             self.expect("comma")
-            decl_map[a.value] = s.value
+            decl_map[a.value] = v
         self.expect("rightcurly")
         return DeclExpr(name, decl_map)
+
+    def parse_comment(self):
+        self.expect("comment")
+        return CommentExpr()
 
     def parse_expr(self):
         t = self.peek()
@@ -96,13 +134,17 @@ class Parser:
             return self.parse_decl()
         if t.type == "data":
             return self.parse_data()
-        raise ParserError("unhandled")
+        if t.type == "comment":
+            return self.parse_comment()
+        raise ParserError(f"unhandled: {t}")
 
     def parse(self):
         while 1:
             e = self.parse_expr()
             if e.type == "eof":
                 break
+            if e.type == "comment":
+                continue
             self.exprs.append(e)
 
 if __name__ == "__main__":

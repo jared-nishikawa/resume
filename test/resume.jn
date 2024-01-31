@@ -1,22 +1,34 @@
+/*
+    Resume template
+    January 2024
+*/
+
 data ExperienceEntry {
     name,
     startdate,
     enddate,
     title,
+    projects,
 }
 
-ExperienceEntry {
-    name: "Tripleko LLC",
-    startdate: "10/18",
-    enddate: "Present",
-    title: "Owner, Software consultant",
-}
+//ExperienceEntry {
+//    name: "Tripleko LLC",
+//    startdate: "10/18",
+//    enddate: "Present",
+//    title: "Owner, Software consultant",
+//    projects: ["stuff",],
+//}
 
 ExperienceEntry {
     name: "VMware",
     startdate: "10/22",
     enddate: "1/24",
     title: "Senior Information Security Engineer",
+    projects: [
+        "Completely revamped pipeline of asset and scan creation in security data centers.  Automated collection of asset and ownership data from various sources, normalized data, and created assets and scans in the appropriate security center.  Setup weekly runs of the entire pipeline.",
+        "Contributed code to a red team project that scanned internal systems for common passwords.  On finding such a system, the password was used to login to the target, change the password, then store the IP address and new password in a vault for retrieval by the owners.",
+    ],
+
 }
 
 ExperienceEntry {
@@ -24,6 +36,14 @@ ExperienceEntry {
     startdate: "7/18",
     enddate: "10/22",
     title: "Senior Threat Researcher",
+    projects: [
+        "Wrote a novel malware classifier.  This project involved breaking down binary executables into control flow graphs based on opcodes (following JMP, CALL, RET, for example).  The analyzer then generated an n-gram frequency table, which was used as a manageably short vector to compare and cluster malware families.  Using a pre-existing labeled set of malware, the classifier could then accurately classify new malware samples into one of the existing clusters.",
+        "Wrote an automated UPX unpacker.  Malware often comes packed, and the packed binaries commonly are stripped of UPX metadata so while they would still run perfectly fine, the UPX unpacker would not simply unpack them.  This project required an in-depth analysis of the UPX packing algorithm to automatically detect the relevant header information from a stripped, packed file, and then automatically unpack it.  This was used in conjunction with the malware classifier: unpacked files would be more accurately placed into a malware family.",
+        "Contributed to an in-house powershell deobfuscator.  Helped write a powershell language scanner, parser, and reducer.  The initial goal was to automate some repetitive tasks for the SOC analysts on the Managed Detection team, but later it was incorporated into the Carbon Black product itself.",
+        "Contributed to an in-house (later open-sourced) PE file emulator called Binee (Binary Emulation Environment). The approach extended current emulators by mocking out large parts of Windows OS including: threading, scheduler, registry, file system and various userland process structures. The data extracted at scale was used to train a machine learning model for malware detection.",
+        "Technical lead for junior threat analysts. Developed software to automate repeated analyst tasks, including pulling threat metadata, recording which threats have been triaged and by which analyst, and migration away from local CSV files to a central database. Automated detection and dismissal of common false positives.",
+    ],
+
 }
 
 ExperienceEntry {
@@ -31,6 +51,11 @@ ExperienceEntry {
     startdate: "4/16",
     enddate: "7/18",
     title: "Cybersecurity Instructor",
+    projects: [
+        "Python programming instructor for beginner to intermediate students. Covered basics of functions, classes, file IO, encodings, and socket programming.",
+        "Cryptography instructor.  Topics covered: history and technical details of symmetric encryption and validation, stream ciphers, block ciphers (ECB, CBC, CTR), hash functions, MACs, RC4, WEP, DES, 3DES, AES, MD5, SHA1, SHA2, SHA3.  History of major cryptographic attacks, rainbow tables, meet-in-the-middle attacks, padding oracle attacks, and length-extension attacks.  History and technical details of public key encryption and validation, RSA, Diffie-Hellman, SSH, SSL, certificates and certificate authorities, as well as major cryptographic attacks like heartbleed and sslstrip.",
+        "Administration of Canvas LMS, including automation of course creation, account creation, student enrollment, instructor access, and grading tools.",
+    ],
 }
 
 data TalksEntry {
@@ -88,6 +113,8 @@ data EducationEntry {
     school,
     startdate,
     enddate,
+    *thesis,
+    *advisor,
 }
 
 EducationEntry {
@@ -96,6 +123,8 @@ EducationEntry {
     school: "University of Colorado, Boulder",
     startdate: "8/10",
     enddate: "5/16",
+    thesis: "Applications of Cryptographic Hash Functions",
+    advisor: "John Black",
 }
 
 EducationEntry {
@@ -104,4 +133,19 @@ EducationEntry {
     school: "Willamette University",
     startdate: "8/06",
     enddate: "5/10",
+}
+
+data TechEntry {
+    type,
+    list,
+}
+
+TechEntry {
+    type: "Main",
+    list: "Bash, Python, Go, Rust, Vim, Git, AWS, Docker, C/C++, Haskell, SQL",
+}
+
+TechEntry {
+    type: "Other",
+    list: "GDB, Radare2, Kubernetes, PHP, Javascript, HTML/CSS",
 }

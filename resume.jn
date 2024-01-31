@@ -8,7 +8,7 @@ data SummaryEntry {
 }
 
 SummaryEntry {
-    blob: "Software Engineering, Language Parsing, Reverse Engineering, Malware Analysis, Automation, Feature Extraction, Data Science, Machine Learning, Cryptography, Mathematics, Go/Weiqi/Baduk",
+    blob: "Problem solver, researcher, engineer. A history of pursuing knowledge and writing useful software.",
 }
 
 data ExperienceEntry {
@@ -47,7 +47,7 @@ ExperienceEntry {
     projects: [
         "Wrote a novel malware classifier.  This project involved breaking down binary executables into control flow graphs based on opcodes (following JMP, CALL, RET, for example).  The analyzer then generated an n-gram frequency table, which was used as a manageably short vector to compare and cluster malware families.  Using a pre-existing labeled set of malware, the classifier could then accurately classify new malware samples into one of the existing clusters.",
         "Wrote an automated UPX unpacker.  Malware often comes packed, and the packed binaries commonly are stripped of UPX metadata so while they would still run perfectly fine, the UPX unpacker would not simply unpack them.  This project required an in-depth analysis of the UPX packing algorithm to automatically detect the relevant header information from a stripped, packed file, and then automatically unpack it.  This was used in conjunction with the malware classifier: unpacked files would be more accurately placed into a malware family.",
-        "Contributed to an in-house powershell deobfuscator.  Helped write a powershell language scanner, parser, and reducer.  The initial goal was to automate some repetitive tasks for the SOC analysts on the Managed Detection team, but later it was incorporated into the Carbon Black product itself.",
+        "Contributed to an in-house powershell deobfuscator.  Helped write a powershell language scanner, parser, and reducer.  The initial goal was to automate repetitive tasks for the SOC analysts on the Managed Detection team, but later it was incorporated into the Carbon Black product itself.",
         "Contributed to an in-house (later open-sourced) PE file emulator called Binee (Binary Emulation Environment). The approach extended current emulators by mocking out large parts of Windows OS including: threading, scheduler, registry, file system and various userland process structures. The data extracted at scale was used to train a machine learning model for malware detection.",
         "Technical lead for junior threat analysts. Developed software to automate repeated analyst tasks, including pulling threat metadata, recording which threats have been triaged and by which analyst, and migration away from local CSV files to a central database. Automated detection and dismissal of common false positives.",
     ],
@@ -139,7 +139,7 @@ data EducationEntry {
 
 EducationEntry {
     degree: "PhD",
-    major: "Cryptography",
+    major: "Mathematics",
     school: "University of Colorado, Boulder",
     startdate: "8/10",
     enddate: "5/16",
@@ -155,17 +155,18 @@ EducationEntry {
     enddate: "5/10",
 }
 
-data TechEntry {
+data SkillsEntry {
     type,
     list,
 }
 
-TechEntry {
-    type: "Main",
-    list: "Bash, Python, Go, Rust, Vim, Git, AWS, Docker, C/C++, Haskell, SQL, \LaTeX",
+SkillsEntry {
+    type: "Tech",
+    list: "Bash, Python, Go, Rust, Vim, Git, AWS, Docker, C/C++, Haskell, SQL, \LaTeX, GDB, Radare2, Kubernetes, PHP, Javascript, HTML/CSS",
+
 }
 
-TechEntry {
+SkillsEntry {
     type: "Other",
-    list: "GDB, Radare2, Kubernetes, PHP, Javascript, HTML/CSS",
+    list: "Software Engineering, Language Parsers, Compilers, Reverse Engineering, Malware Analysis, Automation, Feature Extraction, Data Science, Machine Learning, Cryptography, Mathematics, Go/Weiqi/Baduk",
 }

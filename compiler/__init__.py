@@ -47,13 +47,15 @@ class Compiler:
         t.cmd("textbf", template.cmd("Huge", "Jared Nishikawa, PhD"))
         t.cmd("texttt", "jared.nishikawa@gmail.com")
 
-        t.cmd("large", "Summary")
-        t.cmd("vskip1mm")
-        t.cmd("hrule")
+        if long:
 
-        for e in self.decl_exprs["SummaryEntry"]:
-            blob = e.decl_map["blob"]
-            t.plain(blob)
+            t.cmd("large", "Summary")
+            t.cmd("vskip1mm")
+            t.cmd("hrule")
+    
+            for e in self.decl_exprs["SummaryEntry"]:
+                blob = e.decl_map["blob"]
+                t.plain(blob)
 
         t.cmd("large", "Experience")
         t.cmd("vskip1mm")
@@ -114,11 +116,11 @@ class Compiler:
                 t.cmd("end", "itemize")
 
         t.cmd("vspc")
-        t.cmd("large", "Tech")
+        t.cmd("large", "Skills")
         t.cmd("vskip1mm")
         t.cmd("hrule")
 
-        for e in self.decl_exprs["TechEntry"]:
+        for e in self.decl_exprs["SkillsEntry"]:
             typ = e.decl_map["type"]
             l = e.decl_map["list"]
             t.cmd("textbf", typ)

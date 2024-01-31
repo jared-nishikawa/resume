@@ -3,6 +3,14 @@
     January 2024
 */
 
+data SummaryEntry {
+    blob,
+}
+
+SummaryEntry {
+    blob: "Software Engineering, Language Parsing, Reverse Engineering, Malware Analysis, Automation, Feature Extraction, Data Science, Machine Learning, Cryptography, Mathematics, Go/Weiqi/Baduk",
+}
+
 data ExperienceEntry {
     name,
     startdate,
@@ -54,7 +62,19 @@ ExperienceEntry {
     projects: [
         "Python programming instructor for beginner to intermediate students. Covered basics of functions, classes, file IO, encodings, and socket programming.",
         "Cryptography instructor.  Topics covered: history and technical details of symmetric encryption and validation, stream ciphers, block ciphers (ECB, CBC, CTR), hash functions, MACs, RC4, WEP, DES, 3DES, AES, MD5, SHA1, SHA2, SHA3.  History of major cryptographic attacks, rainbow tables, meet-in-the-middle attacks, padding oracle attacks, and length-extension attacks.  History and technical details of public key encryption and validation, RSA, Diffie-Hellman, SSH, SSL, certificates and certificate authorities, as well as major cryptographic attacks like heartbleed and sslstrip.",
+        "Developed course content as well as CTFs",
         "Administration of Canvas LMS, including automation of course creation, account creation, student enrollment, instructor access, and grading tools.",
+    ],
+}
+
+ExperienceEntry {
+    name: "University of Colorado, Boulder",
+    startdate: "8/10",
+    enddate: "5/16",
+    title: "Graduate Teaching Assistant",
+    projects: [
+        "Conducted research in pure and applied mathematics, and especially cryptography. Main area of research revolved around the potential existence of a backdoor hash function, one that could be broken only with knowledge of a secret key.",
+        "Taught undergraduate math classes.  Classes taught include: Calculus 1 (intro), Calculus 2 (sequences, series, surfaces, and volumes), Calculus 3 (multivariable calculus), Business Calculus, and Quantitative Reasoning.",
     ],
 }
 
@@ -142,7 +162,7 @@ data TechEntry {
 
 TechEntry {
     type: "Main",
-    list: "Bash, Python, Go, Rust, Vim, Git, AWS, Docker, C/C++, Haskell, SQL",
+    list: "Bash, Python, Go, Rust, Vim, Git, AWS, Docker, C/C++, Haskell, SQL, \LaTeX",
 }
 
 TechEntry {

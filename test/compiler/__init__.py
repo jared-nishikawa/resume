@@ -47,6 +47,14 @@ class Compiler:
         t.cmd("textbf", template.cmd("Huge", "Jared Nishikawa, PhD"))
         t.cmd("texttt", "jared.nishikawa@gmail.com")
 
+        t.cmd("large", "Summary")
+        t.cmd("vskip1mm")
+        t.cmd("hrule")
+
+        for e in self.decl_exprs["SummaryEntry"]:
+            blob = e.decl_map["blob"]
+            t.plain(blob)
+
         t.cmd("large", "Experience")
         t.cmd("vskip1mm")
         t.cmd("hrule")
@@ -99,7 +107,10 @@ class Compiler:
                 for key in ["thesis", "advisor"]:
                     if key in e.decl_map:
                         value = e.decl_map[key]
-                        t.cmd(f"item {key.capitalize()}: " + template.cmd("textit", value))
+                        if key == "thesis":
+                            t.cmd(f"item {key.capitalize()}: " + template.cmd("textit", value))
+                        else:
+                            t.cmd(f"item {key.capitalize()}: {value}")
                 t.cmd("end", "itemize")
 
         t.cmd("vspc")
@@ -112,7 +123,6 @@ class Compiler:
             l = e.decl_map["list"]
             t.cmd("textbf", typ)
             t.plain(l)
-            t.cmd("vspc")
 
         t.cmd("end", "document")
         return t.lines

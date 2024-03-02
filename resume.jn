@@ -33,8 +33,8 @@ ExperienceEntry {
     enddate: "1/24",
     title: "Senior Information Security Engineer",
     projects: [
-        "Completely revamped pipeline of asset and scan creation in security data centers.  Automated collection of asset and ownership data from various sources, normalized data, and created assets and scans in the appropriate security center.  Setup weekly runs of the entire pipeline.",
-        "Contributed code to a red team project that scanned internal systems for common passwords.  On finding such a system, the password was used to login to the target, change the password, then store the IP address and new password in a vault for retrieval by the owners.",
+        "Engineered pipeline of scan creation for 100k+ assets to facilitate vulnerability management.  Automated collection of asset and ownership data, data normalization, and asset and scan creation in the appropriate security center.",
+        "Co-developed offensive security project that scanned internal systems for common passwords.  On finding such a system, the password was used to login to the target, change the password, then store the IP address and new password in a vault for retrieval by the owners.",
     ],
 
 }
@@ -45,10 +45,10 @@ ExperienceEntry {
     enddate: "10/22",
     title: "Senior Threat Researcher",
     projects: [
-        "Wrote a novel malware classifier.  This project involved breaking down binary executables into control flow graphs based on opcodes (following JMP, CALL, RET, for example).  The analyzer then generated an n-gram frequency table, which was used as a manageably short vector to compare and cluster malware families.  Using a pre-existing labeled set of malware, the classifier could then accurately classify new malware samples into one of the existing clusters.",
-        "Wrote an automated UPX unpacker.  Malware often comes packed, and the packed binaries commonly are stripped of UPX metadata so while they would still run perfectly fine, the UPX unpacker would not simply unpack them.  This project required an in-depth analysis of the UPX packing algorithm to automatically detect the relevant header information from a stripped, packed file, and then automatically unpack it.  This was used in conjunction with the malware classifier: unpacked files would be more accurately placed into a malware family.",
-        "Contributed to an in-house powershell deobfuscator.  Helped write a powershell language scanner, parser, and reducer.  The initial goal was to automate repetitive tasks for the SOC analysts on the Managed Detection team, but later it was incorporated into the Carbon Black product itself.",
-        "Contributed to an in-house (later open-sourced) PE file emulator called Binee (Binary Emulation Environment). The approach extended current emulators by mocking out large parts of Windows OS including: threading, scheduler, registry, file system and various userland process structures. The data extracted at scale was used to train a machine learning model for malware detection.",
+        "Developer for a novel malware classifier.  This project involved breaking down binary executables into control flow graphs based on opcodes (following JMP, CALL, RET, for example).  The analyzer then generated an n-gram frequency table, which was used as a manageably short vector to compare and cluster malware families.  Using a pre-existing labeled set of malware, the classifier could then accurately classify new malware samples into one of the existing clusters.",
+        "Developer for an automated UPX unpacker.  This project required an in-depth analysis of the UPX packing algorithm to automatically detect the relevant header information from a stripped, packed file, and then automatically unpack it.  This was used in conjunction with the malware classifier: unpacked files would be more accurately placed into a malware family.",
+        "Co-developer for an in-house powershell deobfuscator.  Helped write a powershell language scanner, parser, and reducer.  The initial goal was to automate repetitive tasks for the SOC analysts on the Managed Detection team, but later it was incorporated into the Carbon Black product itself.",
+        "Co-developer for an in-house (later open-sourced) PE file emulator called Binee (Binary Emulation Environment). The approach extended current emulators by mocking out large parts of Windows OS including: threading, scheduler, registry, file system and various userland process structures. The data extracted at scale was used to train a machine learning model for malware detection.",
         "Technical lead for junior threat analysts. Developed software to automate repeated analyst tasks, including pulling threat metadata, recording which threats have been triaged and by which analyst, and migration away from local CSV files to a central database. Automated detection and dismissal of common false positives.",
     ],
 
@@ -73,7 +73,7 @@ ExperienceEntry {
     enddate: "5/16",
     title: "Graduate Teaching Assistant",
     projects: [
-        "Conducted research in pure and applied mathematics, and especially cryptography. Main area of research revolved around the potential existence of a backdoor hash function, one that could be broken only with knowledge of a secret key.",
+        "Conducted research in pure and applied mathematics, specializing in cryptography. Main area of research revolved around the potential existence of a backdoor hash function, one that could be broken only with knowledge of a secret key.",
         "Taught undergraduate math classes.  Classes taught include: Calculus 1 (intro), Calculus 2 (sequences, series, surfaces, and volumes), Calculus 3 (multivariable calculus), Business Calculus, and Quantitative Reasoning.",
     ],
 }
@@ -163,7 +163,6 @@ data SkillsEntry {
 SkillsEntry {
     type: "Tech",
     list: "Bash, Python, Go, Rust, Vim, Git, AWS, Docker, C/C++, Haskell, SQL, \LaTeX, GDB, Radare2, Kubernetes, PHP, Javascript, HTML/CSS",
-
 }
 
 SkillsEntry {

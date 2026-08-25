@@ -128,6 +128,8 @@ class Scanner:
                 break
             if t.type == "whitespace":
                 continue
+            if t.type == "comment":
+                continue
             self.tokens.append(t)
 
 if __name__ == "__main__":

@@ -8,7 +8,7 @@ data SummaryEntry {
 }
 
 SummaryEntry {
-    blob: "Problem solver, researcher, engineer. A history of pursuing knowledge and writing useful software.",
+    blob: "Software engineer and security researcher with a PhD in Mathematics and experience building production software, security tooling, malware analysis systems, and other software for solving difficult technical problems.",
 }
 
 data ExperienceEntry {
@@ -28,28 +28,59 @@ data ExperienceEntry {
 //}
 
 ExperienceEntry {
-    name: "VMware",
-    startdate: "10/22",
-    enddate: "1/24",
-    title: "Senior Information Security Engineer",
+    name: "Prove",
+    startdate: "9/25",
+    enddate: "Present",
+    title: "Software Engineer",
     projects: [
-        "Engineered pipeline of scan creation for 100k+ assets to facilitate vulnerability management.  Automated collection of asset and ownership data, data normalization, and asset and scan creation in the appropriate security center.",
-        "Co-developed offensive security project that scanned internal systems for common passwords.  On finding such a system, the password was used to login to the target, change the password, then store the IP address and new password in a vault for retrieval by the owners.",
+        "Designed and implemented a consumer and business prefill platform end-to-end, integrating ranking, exclusion, and identity deduplication services into a multi-step waterfall pipeline.",
+        "Built configurable identity verification workflows including PO Box validation, national ID normalization, deceased-record filtering, and name-match scoring with tunable thresholds.",
+        "Improved service observability and reliability through OpenTelemetry health checks, enriched decision-point logging, and correlation-ID tracing across services.",
+        "Built sandbox environments for prefill flows, enabling integration testing without dependencies on production data.",
+        "Maintained CI/CD pipelines across multiple services and resolved security scan failures.",
+        "Updated OpenAPI specifications and API schemas to support new product fields, identity attributes, and response structures.",
+    ],
+}
+
+ExperienceEntry {
+    name: "PDQ",
+    startdate: "4/24",
+    enddate: "8/25",
+    title: "Application Security Engineer",
+    projects: [
+        "Developed application security capabilities including threat modeling, SAST/DAST, application penetration testing, and fuzzing.",
+        "Performed security assessments of applications and services and worked with engineering teams to remediate vulnerabilities.",
+        "Built and automated security testing capabilities to improve the breadth and repeatability of application security assessments.",
+    ],
+}
+
+ExperienceEntry {
+    name: "VMware",
+    startdate: "10/19",
+    enddate: "1/24",
+    title: "Senior Threat Researcher",
+    projects: [
+        //"Engineered pipeline of scan creation for 100k+ assets to facilitate vulnerability management.  Automated collection of asset and ownership data, data normalization, and asset and scan creation.",
+        "Developed a malware classification system based on opcode-sequence frequency analysis, enabling automated comparison and clustering of malware samples and classification of new samples into known malware families.",
+        "Developed an automated UPX unpacker capable of recovering executable metadata and unpacking stripped, packed binaries.",
+        "Co-developed an in-house PowerShell deobfuscator, including components for lexical analysis, parsing, and evaluation.",
+        "Co-developed Binee (Binary Emulation Environment), an open-source PE emulator that modeled substantial portions of the Windows environment, including threading, scheduling, the registry, filesystem, and userland process structures.",
+        "Built analysis infrastructure capable of extracting behavioral data from malware at scale for use in machine-learning-based malware detection.",
+        "Developed team tools for running analysis pipelines on binary executable samples.",
     ],
 
 }
 
 ExperienceEntry {
-    name: "VMware Carbon Black",
+    name: "Carbon Black",
     startdate: "7/18",
-    enddate: "10/22",
-    title: "Senior Threat Researcher",
+    enddate: "10/19",
+    title: "Senior Threat Analyst",
     projects: [
-        "Developer for a novel malware classifier.  This project involved breaking down binary executables into control flow graphs based on opcodes (following JMP, CALL, RET, for example).  The analyzer then generated an n-gram frequency table, which was used as a manageably short vector to compare and cluster malware families.  Using a pre-existing labeled set of malware, the classifier could then accurately classify new malware samples into one of the existing clusters.",
-        "Developer for an automated UPX unpacker.  This project required an in-depth analysis of the UPX packing algorithm to automatically detect the relevant header information from a stripped, packed file, and then automatically unpack it.  This was used in conjunction with the malware classifier: unpacked files would be more accurately placed into a malware family.",
-        "Co-developer for an in-house powershell deobfuscator.  Helped write a powershell language scanner, parser, and reducer.  The initial goal was to automate repetitive tasks for the SOC analysts on the Managed Detection team, but later it was incorporated into the Carbon Black product itself.",
-        "Co-developer for an in-house (later open-sourced) PE file emulator called Binee (Binary Emulation Environment). The approach extended current emulators by mocking out large parts of Windows OS including: threading, scheduler, registry, file system and various userland process structures. The data extracted at scale was used to train a machine learning model for malware detection.",
-        "Technical lead for junior threat analysts. Developed software to automate repeated analyst tasks, including pulling threat metadata, recording which threats have been triaged and by which analyst, and migration away from local CSV files to a central database. Automated detection and dismissal of common false positives.",
+        "Served as technical lead for junior threat analysts, providing technical guidance on malware and threat analysis.",
+        "Developed automation to eliminate repetitive analyst workflows, including automated collection of threat metadata and migration from analyst-maintained CSV files to a centralized database.",
+        "Automated detection and dismissal of common false positives, reducing repetitive manual analysis.",
+        "Carbon Black was acquired by VMware in October 2019",
     ],
 
 }
@@ -60,10 +91,10 @@ ExperienceEntry {
     enddate: "7/18",
     title: "Cybersecurity Instructor",
     projects: [
-        "Python programming instructor for beginner to intermediate students. Covered basics of functions, classes, file IO, encodings, and socket programming.",
-        "Cryptography instructor.  Topics covered: history and technical details of symmetric encryption and validation, stream ciphers, block ciphers (ECB, CBC, CTR), hash functions, MACs, RC4, WEP, DES, 3DES, AES, MD5, SHA1, SHA2, SHA3.  History of major cryptographic attacks, rainbow tables, meet-in-the-middle attacks, padding oracle attacks, and length-extension attacks.  History and technical details of public key encryption and validation, RSA, Diffie-Hellman, SSH, SSL, certificates and certificate authorities, as well as major cryptographic attacks like heartbleed and sslstrip.",
-        "Developed course content as well as CTFs",
-        "Administration of Canvas LMS, including automation of course creation, account creation, student enrollment, instructor access, and grading tools.",
+        "Taught Python programming from introductory through intermediate levels, covering functions, classes, file I/O, encodings, and network programming.",
+        "Designed and taught cryptography curriculum covering symmetric and public-key cryptography, hash functions, MACs, AES, RSA, Diffie-Hellman, SSH, TLS, certificates, and common cryptographic attacks.",
+        "Developed course material and hands-on CTF exercises covering application security, cryptography, and offensive security concepts.",
+        "Administered and automated the Canvas LMS, including course creation, account provisioning, enrollment, instructor access, and grading workflows.",
     ],
 }
 
@@ -73,10 +104,13 @@ ExperienceEntry {
     enddate: "5/16",
     title: "Graduate Teaching Assistant",
     projects: [
-        "Conducted research in pure and applied mathematics, specializing in cryptography. Main area of research revolved around the potential existence of a backdoor hash function, one that could be broken only with knowledge of a secret key.",
+        //"Conducted research in pure and applied mathematics, specializing in cryptography. Main area of research concerned the potential existence of a backdoor hash function, one that could be broken only with knowledge of a secret key.",
+        "Conducted research in pure and applied mathematics, specializing in cryptography and back-door hash functions.",
         "Taught undergraduate math classes.  Classes taught include: Calculus 1 (intro), Calculus 2 (sequences, series, surfaces, and volumes), Calculus 3 (multivariable calculus), Business Calculus, and Quantitative Reasoning.",
     ],
 }
+
+/*
 
 data TalksEntry {
     conference,
@@ -126,6 +160,7 @@ TalksEntry {
     date: "11/14",
     title: "Hash Functions, a Soft Introduction",
 }
+*/
 
 data EducationEntry {
     degree,
@@ -162,10 +197,10 @@ data SkillsEntry {
 
 SkillsEntry {
     type: "Tech",
-    list: "Bash, Python, Go, Rust, Vim, Git, AWS, Docker, C/C++, Haskell, SQL, \LaTeX, GDB, Radare2, Kubernetes, PHP, Javascript, HTML/CSS",
+    list: "Bash, Python, Go, Rust, Git, AWS, C/C++, SQL, \LaTeX",
 }
 
 SkillsEntry {
     type: "Other",
-    list: "Software Engineering, Language Parsers, Compilers, Reverse Engineering, Malware Analysis, Automation, Feature Extraction, Data Science, Machine Learning, Cryptography, Mathematics, Go/Weiqi/Baduk",
+    list: "Software Engineering, Language Parsers, Compilers, Reverse Engineering, Malware Analysis, Automation, Cryptography, Mathematics",
 }

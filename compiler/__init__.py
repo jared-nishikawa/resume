@@ -44,7 +44,7 @@ class Compiler:
         t.cmd("newcommand", template.cmd("vspc"), template.cmd("vskip5mm"))
         t.cmd("renewcommand" + template.cmd("labelitemi", template.cmd("raisebox", "0.25ex", template.cmd("tiny" + template.mathmode(template.cmd("bullet"))))))
         t.cmd("pagenumbering", "gobble")
-        t.cmd("textbf", template.cmd("Huge", "Jared Nishikawa, PhD"))
+        t.cmd("textbf", template.cmd("Huge", "Jared Nishikawa"))
         t.cmd("texttt", "jared.nishikawa@gmail.com")
 
         if long:
@@ -75,12 +75,15 @@ class Compiler:
                     t.cmd("item " + item)
                 t.cmd("end", "itemize")
 
-        t.cmd("vspc")
-        t.cmd("large", "Talks")
-        t.cmd("vskip1mm")
-        t.cmd("hrule")
+        talks = self.decl_exprs.get("TalksEntry", [])
 
-        for e in self.decl_exprs["TalksEntry"]:
+        if talks:
+            t.cmd("vspc")
+            t.cmd("large", "Talks")
+            t.cmd("vskip1mm")
+            t.cmd("hrule")
+
+        for e in self.decl_exprs.get("TalksEntry", []):
             conf = e.decl_map["conference"]
             loc = e.decl_map["location"]
             date = e.decl_map["date"]
